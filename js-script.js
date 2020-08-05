@@ -1,7 +1,7 @@
 
 //******* @author: CareCart App-Mr *************************
-//****** Store Frontend JS - js-script.js GH v.1.0.0 *******
-//****** Updated at: 23-July-2020, 12:01 PM ****************
+//****** Store Frontend JS - js-script.js GH v.1.0.4 *******
+//****** Updated at: 05-August-2020, 03:10 PM ****************
 
     var isAjaxFbMR = 0;
     var isCheckForCallFbMR = true;
@@ -1288,6 +1288,7 @@
                 +   'position: fixed;'
 
                 +   stickyPosition
+	        +   'z-index: 111;'
 /*
                 +   'bottom: 7px;'
                 +   'left: 5px;'

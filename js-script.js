@@ -565,7 +565,7 @@ function AbandonedCartFbMR() {
             var aurl = URL.split('/');
             //console.log("aurl: " + aurl[3]);
             product_id = null;
-            if (aurl[3] == 'products')
+            if (aurl[3] == 'products' || aurl[5] == 'products')
             {
                 product_id = meta.product.id;
             }

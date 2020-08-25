@@ -1,7 +1,7 @@
 
 //******* @author: CareCart App-Mr *************************
-//****** Store Frontend JS - js-script.js GH v.1.0.5 *******
-//****** Updated at: 19-August-2020, 10:45 AM ****************
+//****** Store Frontend JS - js-script.js GH v.1.0.7 *******
+//****** Updated at: 25-August-2020, 18:40 AM ****************
 
 var isAjaxFbMR = 0;
 var isCheckForCallFbMR = true;
@@ -54,8 +54,6 @@ function AbandonedCartFbMR() {
     var storeFbMR = {
         'domain': Shopify.shop
     };
-    //var apiBaseUrlFbMR = "{{Config::get('app.url')}}";
-    //var apiBaseUrlFbMR = "https://dev-proapp.carecart.io";
     var apiBaseUrlFbMR = "https://app-mr.carecart.io";
     var facebookCheckboxWidget = {};
     var facebookCheckboxWidgetStatus = null;
@@ -421,7 +419,7 @@ function AbandonedCartFbMR() {
 
                 if (e.event == 'rendered') {
                     console.log("Plugin was rendered");
-                    if(Shopify.shop == 'dev-messenger-12.myshopify.com' || Shopify.shop == 'epilsense.myshopify.com')
+                    if(Shopify.shop == 'dev-messenger-12.myshopify.com' || Shopify.shop == 'epilsense.myshopify.com' || Shopify.shop == 'devotedwear.myshopify.com')
                     {
                         $('head').append('<style type="text/css">.cc-atc-widget-main-container{margin-top: 20px !important;}</style>');
                         console.log("checkbox styling implemented special");
@@ -734,6 +732,10 @@ function AbandonedCartFbMR() {
         if(Shopify.shop == 'ultravioletsaver.myshopify.com' || Shopify.shop == 'dev-messenger-15.myshopify.com')
         {
             myvar = myvar + '<div class="cc-messenger-discount-popup" class="discount-coupon-wrapper-cc" style="width: 300px;display: block;margin: auto;margin-top: 25px;">'
+        }
+        else if(Shopify.shop == 'the-outlet-x.myshopify.com')
+        {
+            myvar = myvar + '<div class="cc-messenger-discount-popup" class="discount-coupon-wrapper-cc" style="width: 400px; height: 260px;">'
         }
         else
         {

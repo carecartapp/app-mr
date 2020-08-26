@@ -735,7 +735,7 @@ function AbandonedCartFbMR() {
         }
         else if(Shopify.shop == 'the-outlet-x.myshopify.com')
         {
-            myvar = myvar + '<div class="cc-messenger-discount-popup" class="discount-coupon-wrapper-cc" style="width: 400px; height: 260px;">'
+            myvar = myvar + '<div class="cc-messenger-discount-popup" class="discount-coupon-wrapper-cc" style="width: 400px; height: 280px;">'
         }
         else
         {

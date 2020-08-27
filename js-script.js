@@ -1,7 +1,7 @@
 
 //******* @author: CareCart App-Mr *************************
-//****** Store Frontend JS - js-script.js GH v.1.0.9 *******
-//****** Updated at: 27-August-2020, 15:00 PM ****************
+//****** Store Frontend JS - js-script.js GH v.1.0.10 *******
+//****** Updated at: 27-August-2020, 15:18 PM ****************
 
 var isAjaxFbMR = 0;
 var isCheckForCallFbMR = true;
@@ -1280,7 +1280,7 @@ function AbandonedCartFbMR() {
         //*********** Styling for Right to Left Stores like Arabic & Urdu ******************
         if(Shopify.shop == 'sallahps.myshopify.com')
         {
-            $('head').append('<style>@media only screen and (max-width: 768px) {.sticky-discount-box-collapse-view-cc, .sticky-discount-box-open-view-cc, .sticky-discount-box-subscribed-view-cc { bottom: 47px !important;}} .sticky-discount-box-open-view-cc .close-action, .sticky-discount-box-subscribed-view-cc .close-action{left: 8px;}</style>');
+            $('head').append('<style>@media only screen and (max-width: 768px) {.sticky-discount-box-collapse-view-cc, .sticky-discount-box-open-view-cc, .sticky-discount-box-subscribed-view-cc { bottom: 47px !important;}} .sticky-discount-box-open-view-cc .close-action, .sticky-discount-box-subscribed-view-cc .close-action{left: 8px;}.sticky-discount-box-collapse-view-image-cc i { transform: rotate(92deg) !important; }.sticky-discount-box-collapse-view-image-cc {-webkit-clip-path: polygon(0% 0%, 32% 0%, 0% 50%, 100% 213%, 100% 0) !important; clip-path: polygon(0% 0%, 32% 0%, 0% 50%, 100% 213%, 100% 0) !important;padding: 10px 20px 8px 15px !important;}</style>');
         }
 
         if(Shopify.shop == 'seacoast-pop-up.myshopify.com')

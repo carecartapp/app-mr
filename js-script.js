@@ -1,7 +1,7 @@
 
 //******* @author: CareCart App-Mr *************************
-//****** Store Frontend JS - js-script.js GH v.1.0.7 *******
-//****** Updated at: 25-August-2020, 18:40 AM ****************
+//****** Store Frontend JS - js-script.js GH v.1.0.9 *******
+//****** Updated at: 27-August-2020, 15:00 PM ****************
 
 var isAjaxFbMR = 0;
 var isCheckForCallFbMR = true;
@@ -1277,7 +1277,13 @@ function AbandonedCartFbMR() {
             'z-index: 99999;';
 
         var stickyPosition = stickyLeftBottomBoxCollapsedStyling;
-        if(Shopify.shop == 'dev-messenger-12.myshopify.com' || Shopify.shop == 'seacoast-pop-up.myshopify.com')
+        //*********** Styling for Right to Left Stores like Arabic & Urdu ******************
+        if(Shopify.shop == 'sallahps.myshopify.com')
+        {
+            $('head').append('<style>@media only screen and (max-width: 768px) {.sticky-discount-box-collapse-view-cc, .sticky-discount-box-open-view-cc, .sticky-discount-box-subscribed-view-cc { bottom: 47px !important;}} .sticky-discount-box-open-view-cc .close-action, .sticky-discount-box-subscribed-view-cc .close-action{left: 8px;}</style>');
+        }
+
+        if(Shopify.shop == 'seacoast-pop-up.myshopify.com')
         {
             stickyPosition = stickyRightTopBoxCollapsedStyling;
         }

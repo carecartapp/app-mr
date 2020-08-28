@@ -1,7 +1,7 @@
 
-//******* @author: CareCart App-Mr *************************
-//****** Store Frontend JS - js-script.js GH v.1.0.11 *******
-//****** Updated at: 27-August-2020, 15:18 PM ****************
+//******* @author: CareCart App-Mr *******************************************
+//****** Store Frontend JS - js-script.js GH v.1.0.12 - Build ver 2.0.0 ******
+//****** Updated at: 28-Aug-2020, 18:44 PM  **********************************
 
 var isAjaxFbMR = 0;
 var isCheckForCallFbMR = true;
@@ -421,7 +421,7 @@ function AbandonedCartFbMR() {
                     console.log("Plugin was rendered");
                     if(Shopify.shop == 'dev-messenger-12.myshopify.com' || Shopify.shop == 'epilsense.myshopify.com' || Shopify.shop == 'devotedwear.myshopify.com')
                     {
-                        $('head').append('<style type="text/css">.cc-atc-widget-main-container{margin-top: 20px !important;}</style>');
+                        $('head').append('<style type="text/css">.cc-atc-widget-main-container{margin-top: 110px !important;}</style>');
                         console.log("checkbox styling implemented special");
                     }
                     else if(Shopify.shop == 'ultravioletsaver.myshopify.com' || Shopify.shop == 'dev-messenger-15.myshopify.com')
@@ -703,6 +703,29 @@ function AbandonedCartFbMR() {
 
         if (checkBoxWidgetData.type == 'ATC') {
             facebookCheckboxWidgetType = "ATC";
+
+            if(Shopify.shop == 'new-gear-day.myshopify.com')
+            {
+//************************** Load Messenger ONLY on Products Page as requested by Store Owner ***************************
+                console.log("IN vapeboss-ph.myshopify.com STORE");
+                var URL = window.location.href;
+                var aurl = URL.split('/');
+                //console.log("aurl: " + aurl[3]);
+                product_id = null;
+                if (aurl[3] == 'products' || aurl[5] == 'products')
+                {
+                    product_id = meta.product.id;
+                }
+                if(product_id !== null)
+                {
+                    console.log("product_id is NOT null: " + product_id);
+                }
+                else
+                {
+                    console.log("product_id is null: " + product_id);
+                    return;
+                }
+            }
 
             populateATCWidget(mainElem, elem, function () {
                 $(".cc_messenger_widget_atc_title").css('font-size', facebookCheckboxWidget.checkbox_widget.size);

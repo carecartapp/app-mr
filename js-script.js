@@ -1,7 +1,7 @@
 
 //******* @author: CareCart App-Mr *******************************************
-//****** Store Frontend JS - js-script.js GH v.1.0.12 - Build ver 2.0.0 ******
-//****** Updated at: 28-Aug-2020, 18:44 PM  **********************************
+//****** Store Frontend JS - js-script.js GH v.1.0.13 - Build ver 2.0.0 ******
+//****** Updated at: 25-Sep-2020, 12:02 PM  **********************************
 
 var isAjaxFbMR = 0;
 var isCheckForCallFbMR = true;
@@ -400,10 +400,10 @@ function AbandonedCartFbMR() {
                     console.log("Send to Messenger Plugin was rendered");
                 }
                 if (e.event == 'clicked' ){
-                    $('#thank-you-div', 'body').show();
+                    ccFbMRJquery('#thank-you-div', 'body').show();
                     setTimeout( function(){
                         // Do something after 1 second
-                        $('#cc-atcp-table', 'body').hide();
+                        ccFbMRJquery('#cc-atcp-table', 'body').hide();
                     }  , 2000 );
 //************************ So that pop-up doesn't open again in same session **************************************
                     window.localStorage.setItem('popUpCloseClicked',1);
@@ -421,12 +421,12 @@ function AbandonedCartFbMR() {
                     console.log("Plugin was rendered");
                     if(Shopify.shop == 'dev-messenger-12.myshopify.com' || Shopify.shop == 'epilsense.myshopify.com' || Shopify.shop == 'devotedwear.myshopify.com')
                     {
-                        $('head').append('<style type="text/css">.cc-atc-widget-main-container{margin-top: 110px !important;}</style>');
+                        ccFbMRJquery('head').append('<style type="text/css">.cc-atc-widget-main-container{margin-top: 110px !important;}</style>');
                         console.log("checkbox styling implemented special");
                     }
                     else if(Shopify.shop == 'ultravioletsaver.myshopify.com' || Shopify.shop == 'dev-messenger-15.myshopify.com')
                     {
-                        $('.cc-messenger-checkbox-for-copy').find('span:first').css({
+                        ccFbMRJquery('.cc-messenger-checkbox-for-copy').find('span:first').css({
                             width: "190"
                         });
                         console.log('Special Discount Widget Color White');
@@ -434,12 +434,12 @@ function AbandonedCartFbMR() {
                     else if(Shopify.shop == 'galt-webshop.myshopify.com')
                     {
                         // remove upper case css from h4 of class cc_messenger_widget_atc_title
-                        $('head').append('<style type="text/css">.cc_messenger_widget_atc_title{text-transform: none !important;}</style>');
+                        ccFbMRJquery('head').append('<style type="text/css">.cc_messenger_widget_atc_title{text-transform: none !important;}</style>');
                         console.log("remove upper case css from h4 of class cc_messenger_widget_atc_title");
                     }
                     else
                     {
-                        $('head').append('<style type="text/css">.cc-atc-widget-main-container{margin-top: 0 !important;}</style>');
+                        ccFbMRJquery('head').append('<style type="text/css">.cc-atc-widget-main-container{margin-top: 0 !important;}</style>');
                         console.log("checkbox styling implemented");
                     }
                 } else if (e.event == 'checkbox') {
@@ -471,21 +471,21 @@ function AbandonedCartFbMR() {
             FB.Event.subscribe('customerchat.load', function (e) {
                 console.log("customerchat.load event");
                 //console.log("Customer chat loaded on store: " + Shopify.shop);
-                if(Shopify.shop == 'arielblack.myshopify.com' || Shopify.shop == 'hairadise-everything-hair.myshopify.com' || Shopify.shop == 'dev-messenger-12.myshopify.com')
+                if(Shopify.shop == 'hairadise-everything-hair.myshopify.com' || Shopify.shop == 'dev-messenger-12.myshopify.com')
                 {
-                    //$('head').append('<style type="text/css">body{font:normal 14pt Arial, Helvetica, sans-serif;background:#000;color:#fff}a,a:visited{color:#ccc;text-decoration:none;border-bottom:1px solid #00ff00}a:hover{color:#00ff00;border-color:#ccc}</style>');
-                    //$('head').append('<style type="text/css">.fb_iframe_widget iframe {bottom: 155px !important;}.fb_dialog {position: -webkit-sticky !important;position: fixed !important;bottom: 100px !important;right: 30px !important;}</style>');
-                    $('head').append('<style type="text/css">.fb-customerchat.fb_invisible_flow.fb_iframe_widget iframe {bottom: 155px !important;}.fb_dialog {position: -webkit-sticky !important;position: fixed !important;bottom: 100px !important;right: 30px !important;}</style>');
+                    //ccFbMRJquery('head').append('<style type="text/css">body{font:normal 14pt Arial, Helvetica, sans-serif;background:#000;color:#fff}a,a:visited{color:#ccc;text-decoration:none;border-bottom:1px solid #00ff00}a:hover{color:#00ff00;border-color:#ccc}</style>');
+                    //ccFbMRJquery('head').append('<style type="text/css">.fb_iframe_widget iframe {bottom: 155px !important;}.fb_dialog {position: -webkit-sticky !important;position: fixed !important;bottom: 100px !important;right: 30px !important;}</style>');
+                    ccFbMRJquery('head').append('<style type="text/css">.fb-customerchat.fb_invisible_flow.fb_iframe_widget iframe {bottom: 155px !important;}.fb_dialog {position: -webkit-sticky !important;position: fixed !important;bottom: 100px !important;right: 30px !important;}</style>');
                     console.log("New styling loaded ... Messenger a little above right bottom");
                 }
                 if(Shopify.shop == 'galt-webshop.myshopify.com' || Shopify.shop == 'dev-messenger-13.myshopify.com')
                 {
-                    $('head').append('<style type="text/css">.fb-customerchat.fb_invisible_flow.fb_iframe_widget iframe {bottom: 120px !important;left: 30px !important;}.fb_dialog {position: -webkit-sticky !important;position: fixed !important;bottom: 65px !important;left: 30px !important;}</style>');
+                    ccFbMRJquery('head').append('<style type="text/css">.fb-customerchat.fb_invisible_flow.fb_iframe_widget iframe {bottom: 120px !important;left: 30px !important;}.fb_dialog {position: -webkit-sticky !important;position: fixed !important;bottom: 65px !important;left: 30px !important;}</style>');
                     console.log("New styling loaded ... Messenger on left side of screen");
                 }
                 if(Shopify.shop == 'ultravioletsaver.myshopify.com' || Shopify.shop == 'dev-messenger-15.myshopify.com')
                 {
-                    $('head').append('<style type="text/css">.fb-customerchat.fb_invisible_flow.fb_iframe_widget iframe {bottom: 245px !important;}.fb_dialog {position: -webkit-sticky !important;position: fixed !important;bottom: 190px !important;right: 30px !important;}</style>');
+                    ccFbMRJquery('head').append('<style type="text/css">.fb-customerchat.fb_invisible_flow.fb_iframe_widget iframe {bottom: 245px !important;}.fb_dialog {position: -webkit-sticky !important;position: fixed !important;bottom: 190px !important;right: 30px !important;}</style>');
                     console.log('Special Height 245');
                 }
             });
@@ -621,7 +621,7 @@ function AbandonedCartFbMR() {
     {
         //console.log("In showPopupTriggerImpression");
         if(window.localStorage.getItem('popUpCloseClicked') == 1) return;
-        var careCartMessengerDiv = $("body").find("#cc-popup-widget-container");
+        var careCartMessengerDiv = ccFbMRJquery("body").find("#cc-popup-widget-container");
         //******************* Check if Popup Data is filled up *****************
         if (careCartMessengerDiv.length > 0) {
             ccFbMRJquery('#cc-atcp-table', 'body').show();
@@ -728,20 +728,20 @@ function AbandonedCartFbMR() {
             }
 
             populateATCWidget(mainElem, elem, function () {
-                $(".cc_messenger_widget_atc_title").css('font-size', facebookCheckboxWidget.checkbox_widget.size);
+                ccFbMRJquery(".cc_messenger_widget_atc_title").css('font-size', facebookCheckboxWidget.checkbox_widget.size);
 
                 if (facebookCheckboxWidget.checkbox_widget.text_color == 'dark') {
-                    $(".cc-atc-widget-main-container").css('background-color', '#383838');
-                    $(".cc_messenger_widget_atc_title").css('color', '#fff');
+                    ccFbMRJquery(".cc-atc-widget-main-container").css('background-color', '#383838');
+                    ccFbMRJquery(".cc_messenger_widget_atc_title").css('color', '#fff');
                 } else {
-                    $(".cc-atc-widget-main-container").css('background-color', '');
-                    $(".cc_messenger_widget_atc_title").css('color', '#000');
+                    ccFbMRJquery(".cc-atc-widget-main-container").css('background-color', '');
+                    ccFbMRJquery(".cc_messenger_widget_atc_title").css('color', '#000');
                 }
 
                 if (facebookCheckboxWidget.checkbox_widget.center_align == 1) {
-                    $(".cc_messenger_widget_atc_title").css('text-align', 'center');
+                    ccFbMRJquery(".cc_messenger_widget_atc_title").css('text-align', 'center');
                 } else {
-                    $(".cc_messenger_widget_atc_title").css('text-align', 'left');
+                    ccFbMRJquery(".cc_messenger_widget_atc_title").css('text-align', 'left');
                 }
             });
         } else {
@@ -750,7 +750,7 @@ function AbandonedCartFbMR() {
     }
 
     function showDiscountWidget(checkBoxWidgetData, elem) {
-        var careCartMessengerDiv = $("body").find(".carecart-messenger");
+        var careCartMessengerDiv = ccFbMRJquery("body").find(".carecart-messenger");
         var myvar = '';
         if(Shopify.shop == 'ultravioletsaver.myshopify.com' || Shopify.shop == 'dev-messenger-15.myshopify.com')
         {
@@ -855,20 +855,20 @@ function AbandonedCartFbMR() {
         populateSendToMessengerWidget(mainElem, elementSendToMessenger, addToCartPopUpData, function () {
             //populateATCWidget(mainElem, elementSendToMessenger, function () {
             /*
-                            $(".cc_messenger_widget_atc_title").css('font-size', facebookCheckboxWidget.checkbox_widget.size);
+                            ccFbMRJquery(".cc_messenger_widget_atc_title").css('font-size', facebookCheckboxWidget.checkbox_widget.size);
 
                             if (facebookCheckboxWidget.checkbox_widget.text_color == 'dark') {
-                                $(".cc-atc-widget-main-container").css('background-color', '#383838');
-                                $(".cc_messenger_widget_atc_title").css('color', '#fff');
+                                ccFbMRJquery(".cc-atc-widget-main-container").css('background-color', '#383838');
+                                ccFbMRJquery(".cc_messenger_widget_atc_title").css('color', '#fff');
                             } else {
-                                $(".cc-atc-widget-main-container").css('background-color', '');
-                                $(".cc_messenger_widget_atc_title").css('color', '#000');
+                                ccFbMRJquery(".cc-atc-widget-main-container").css('background-color', '');
+                                ccFbMRJquery(".cc_messenger_widget_atc_title").css('color', '#000');
                             }
 
                             if (facebookCheckboxWidget.checkbox_widget.center_align == 1) {
-                                $(".cc_messenger_widget_atc_title").css('text-align', 'center');
+                                ccFbMRJquery(".cc_messenger_widget_atc_title").css('text-align', 'center');
                             } else {
-                                $(".cc_messenger_widget_atc_title").css('text-align', 'left');
+                                ccFbMRJquery(".cc_messenger_widget_atc_title").css('text-align', 'left');
                             }
             */
         });
@@ -876,7 +876,7 @@ function AbandonedCartFbMR() {
     }
 
     function populateATCWidget(mainElem, elem, callBack) {
-        var careCartMessengerDiv = $("body").find(".carecart-messenger");
+        var careCartMessengerDiv = ccFbMRJquery("body").find(".carecart-messenger");
         if (careCartMessengerDiv.length > 0) {
             //console.log('mainElem populateATCWidget: ' + mainElem);
             //console.log('elem populateATCWidget: ' + elem);
@@ -894,8 +894,8 @@ function AbandonedCartFbMR() {
     function populateSendToMessengerWidget(mainElem, elem, addToCartPopUpData, callBack) {
         showAddToCartPopup(addToCartPopUpData, function () {
 
-            //var careCartMessengerDiv = $("body").find(".carecart-messenger");
-            var careCartMessengerDiv = $("body").find("#cc-popup-widget-container");
+            //var careCartMessengerDiv = ccFbMRJquery("body").find(".carecart-messenger");
+            var careCartMessengerDiv = ccFbMRJquery("body").find("#cc-popup-widget-container");
             if (careCartMessengerDiv.length > 0) {
                 //console.log('mainElem in populateSendToMessengerWidget: ' + mainElem);
                 //console.log('mainElem in populateSendToMessengerWidget: ');
@@ -987,45 +987,60 @@ function AbandonedCartFbMR() {
 
     }
 
-    $("body").on("click", ".cc-dw-btn", function () {
-        var minNumber = 1; // Minimum
-        var maxNumber = 9999; // Maximum
-        var randomNumber = Math.floor(Math.random() * (maxNumber + 1) + minNumber);
-        var randomId = "cc-dw-copy-" + randomNumber;
-        var myvar =
-            '<div style="background-color: #00a651;font-size: 24px;color: #fff;padding: 4px 20px;border-radius: 4px;border: 1px solid #ededed;width: 85px;height: 45px;float: left;margin-right: 35px;text-align: center;"><i class="fa fa-check"></i></div>' +
-            '<h5 style="margin-top:15px">' +
-            '<span style="word-break: break-all;">' + facebookCheckboxWidget.checkbox_widget.discount_text + '</span>' +
-            //'<span id="cc-dw-copy" style="word-break: break-all;">' + facebookCheckboxWidget.checkbox_widget.discount_code + '</span>' +
-            '<span id="' + randomId + '" style="word-break: break-all;">' + facebookCheckboxWidget.checkbox_widget.discount_code + '</span>' +
-            '</h5>';
+    scriptInjectionFbMR("https://code.jquery.com/jquery-3.2.1.min.js", function () {
+        scriptInjectionFbMR("https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js", function () {
+            window.ccFbMRJquery = jQuery.noConflict(true);
+            scriptInjectionFbMR("https://use.fontawesome.com/e0a385ecbc.js");
 
-        if (facebookCheckboxWidgetStatus == null || facebookCheckboxWidgetStatus == "unchecked") {
-            //$(".cc-checkbox-error").show();
-            $(this).siblings('span:first').show();
-        } else {
-            $(".cc-checkbox-error").hide();
-            $(this).html(facebookCheckboxWidget.checkbox_widget.copy_button);
+            addJqueryEventListeners();
 
-            //$(this).attr("id", "cc-dw-copy");
-            $(this).attr("id", randomId);
-            $(this).attr("name", "copy_pre");
-            $(".cc-messenger-checkbox-for-copy").html(myvar);
-        }
-    });
+            console.log("Initialization completed");
+            if (typeof callback == 'function') {
+                callback.apply(this, callbackArgs);
+            }
 
-    $('body').on('click', 'a[name=copy_pre]', function () {
-        var id = $(this).attr('id');
-        var el = document.getElementById(id);
-        var range = document.createRange();
-        range.selectNodeContents(el);
-        var sel = window.getSelection();
-        sel.removeAllRanges();
-        sel.addRange(range);
-        document.execCommand('copy');
-        alert("Code copied to clipboard.");
-        return false;
-    });
+            ccFbMRJquery("body").on("click", ".cc-dw-btn", function () {
+                var minNumber = 1; // Minimum
+                var maxNumber = 9999; // Maximum
+                var randomNumber = Math.floor(Math.random() * (maxNumber + 1) + minNumber);
+                var randomId = "cc-dw-copy-" + randomNumber;
+                var myvar =
+                    '<div style="background-color: #00a651;font-size: 24px;color: #fff;padding: 4px 20px;border-radius: 4px;border: 1px solid #ededed;width: 85px;height: 45px;float: left;margin-right: 35px;text-align: center;"><i class="fa fa-check"></i></div>' +
+                    '<h5 style="margin-top:15px">' +
+                    '<span style="word-break: break-all;">' + facebookCheckboxWidget.checkbox_widget.discount_text + '</span>' +
+                    //'<span id="cc-dw-copy" style="word-break: break-all;">' + facebookCheckboxWidget.checkbox_widget.discount_code + '</span>' +
+                    '<span id="' + randomId + '" style="word-break: break-all;">' + facebookCheckboxWidget.checkbox_widget.discount_code + '</span>' +
+                    '</h5>';
+
+                if (facebookCheckboxWidgetStatus == null || facebookCheckboxWidgetStatus == "unchecked") {
+                    //ccFbMRJquery(".cc-checkbox-error").show();
+                    ccFbMRJquery(this).siblings('span:first').show();
+                } else {
+                    ccFbMRJquery(".cc-checkbox-error").hide();
+                    ccFbMRJquery(this).html(facebookCheckboxWidget.checkbox_widget.copy_button);
+
+                    //ccFbMRJquery(this).attr("id", "cc-dw-copy");
+                    ccFbMRJquery(this).attr("id", randomId);
+                    ccFbMRJquery(this).attr("name", "copy_pre");
+                    ccFbMRJquery(".cc-messenger-checkbox-for-copy").html(myvar);
+                }
+            });
+
+            ccFbMRJquery('body').on('click', 'a[name=copy_pre]', function () {
+                var id = ccFbMRJquery(this).attr('id');
+                var el = document.getElementById(id);
+                var range = document.createRange();
+                range.selectNodeContents(el);
+                var sel = window.getSelection();
+                sel.removeAllRanges();
+                sel.addRange(range);
+                document.execCommand('copy');
+                alert("Code copied to clipboard.");
+                return false;
+            });
+        });
+
+    })
 
     function showAddToCartPopup(data, callBack) {
         console.log('In showAddToCartPopup Function');
@@ -1303,7 +1318,7 @@ function AbandonedCartFbMR() {
         //*********** Styling for Right to Left Stores like Arabic & Urdu ******************
         if(Shopify.shop == 'sallahps.myshopify.com')
         {
-            $('head').append('<style>@media only screen and (max-width: 768px) {.sticky-discount-box-collapse-view-cc, .sticky-discount-box-open-view-cc, .sticky-discount-box-subscribed-view-cc { bottom: 47px !important;}} .sticky-discount-box-open-view-cc .close-action, .sticky-discount-box-subscribed-view-cc .close-action{left: 8px !important; right: unset !important;}.sticky-discount-box-collapse-view-image-cc i { transform: rotate(92deg) !important; }.sticky-discount-box-collapse-view-image-cc {-webkit-clip-path: polygon(0% 0%, 32% 0%, 0% 50%, 100% 213%, 100% 0) !important; clip-path: polygon(0% 0%, 32% 0%, 0% 50%, 100% 213%, 100% 0) !important;padding: 10px 20px 8px 15px !important;}</style>');
+            ccFbMRJquery('head').append('<style>@media only screen and (max-width: 768px) {.sticky-discount-box-collapse-view-cc, .sticky-discount-box-open-view-cc, .sticky-discount-box-subscribed-view-cc { bottom: 47px !important;}} .sticky-discount-box-open-view-cc .close-action, .sticky-discount-box-subscribed-view-cc .close-action{left: 8px !important; right: unset !important;}.sticky-discount-box-collapse-view-image-cc i { transform: rotate(92deg) !important; }.sticky-discount-box-collapse-view-image-cc {-webkit-clip-path: polygon(0% 0%, 32% 0%, 0% 50%, 100% 213%, 100% 0) !important; clip-path: polygon(0% 0%, 32% 0%, 0% 50%, 100% 213%, 100% 0) !important;padding: 10px 20px 8px 15px !important;}</style>');
         }
 
         if(Shopify.shop == 'seacoast-pop-up.myshopify.com')
@@ -1635,7 +1650,7 @@ function AbandonedCartFbMR() {
                         console.log('showStickyDiscountOpenView HERE MATE');
         */
         ccFbMRJquery('body').append(stickyDiscountOpenViewHtml);
-        var careCartMessengerDiv = $("body").find("#sticky-discount-fb-checkbox-widget");
+        var careCartMessengerDiv = ccFbMRJquery("body").find("#sticky-discount-fb-checkbox-widget");
         if (careCartMessengerDiv.length > 0) {
             console.log('careCartMessengerDiv FOUND');
             //ccFbMRJquery(careCartMessengerDiv).append(myvar);
@@ -1981,7 +1996,7 @@ function AbandonedCartFbMR() {
 
         ccFbMRJquery('body').on('submit', 'form[action="/cart/add"]', function (e) {
             if (facebookCheckboxWidgetType == 'ATC' && facebookCheckboxWidgetStatus == 'checked') {
-                $(".cc_messenger_widget_atc_title").html(facebookCheckboxWidget.checkbox_widget.subscribed_text);
+                ccFbMRJquery(".cc_messenger_widget_atc_title").html(facebookCheckboxWidget.checkbox_widget.subscribed_text);
             }
             // e.preventDefault();
             console.clear();
@@ -2082,7 +2097,7 @@ function AbandonedCartFbMR() {
         ccFbMRJquery('body').on('click', '#sticky-discount-subscribe-btn', function () {
             console.log("sticky discount button clicked");
             if (facebookCheckboxWidgetStatus == null || facebookCheckboxWidgetStatus == "unchecked") {
-                $("#cc-sticky-checkbox-error").show();
+                ccFbMRJquery("#cc-sticky-checkbox-error").show();
             }
             else {
                 ccFbMRJquery('#sticky-discount-open-view-div').hide();

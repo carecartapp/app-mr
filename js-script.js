@@ -1,7 +1,7 @@
 
 //******* @author: CareCart App-Mr *******************************************
-//****** Store Frontend JS - js-script.js GH v.1.0.13 - Build ver 2.0.0 ******
-//****** Updated at: 25-Sep-2020, 12:02 PM  **********************************
+//****** Store Frontend JS - js-script.js GH v.2.0.1 - Build ver 2.0.0 ******
+//****** Updated at: 25-Sep-2020, 15:55 PM  **********************************
 
 var isAjaxFbMR = 0;
 var isCheckForCallFbMR = true;
@@ -988,16 +988,7 @@ function AbandonedCartFbMR() {
     }
 
     scriptInjectionFbMR("https://code.jquery.com/jquery-3.2.1.min.js", function () {
-        scriptInjectionFbMR("https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js", function () {
             window.ccFbMRJquery = jQuery.noConflict(true);
-            scriptInjectionFbMR("https://use.fontawesome.com/e0a385ecbc.js");
-
-            addJqueryEventListeners();
-
-            console.log("Initialization completed");
-            if (typeof callback == 'function') {
-                callback.apply(this, callbackArgs);
-            }
 
             ccFbMRJquery("body").on("click", ".cc-dw-btn", function () {
                 var minNumber = 1; // Minimum
@@ -1038,7 +1029,6 @@ function AbandonedCartFbMR() {
                 alert("Code copied to clipboard.");
                 return false;
             });
-        });
 
     })
 

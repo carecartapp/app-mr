@@ -54,9 +54,9 @@
         var storeFbMR = {
             'domain': Shopify.shop
         };
-        var apiBaseUrlFbMR = "{{Config::get('app.url')}}";
+        //var apiBaseUrlFbMR = "{{Config::get('app.url')}}";
         //var apiBaseUrlFbMR = "https://dev-proapp.carecart.io";
-        //var apiBaseUrlFbMR = "https://app-mr.carecart.io";
+        var apiBaseUrlFbMR = "https://app-mr.carecart.io";
         var facebookCheckboxWidget = {};
         var facebookCheckboxWidgetStatus = null;
         var facebookCheckboxWidgetType = null;

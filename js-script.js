@@ -1,9 +1,10 @@
 
 //******* @author: CareCart App-Mr *******************************************
-//****** Store Frontend JS - js-script.js GH v.2.0.3 - Build ver 2.2.0 ******
-//****** Updated at: 29-Sept-2020, 12:55 PM  **********************************
+//****** Store Frontend JS - js-script.js GH v.2.0.5 - Build ver 2.2.1 *******
+//****** Updated at: 07-Oct-2020, 05:35 PM  **********************************
 
     var isAjaxFbMR = 0;
+    var isCartLoadingFbMR = 0;
     var isCheckForCallFbMR = true;
     window.localStorage.setItem('userCartId', null);
 //************* If we set "stickyDiscountImpressionSaved" to null below, on every page reload or new store page tab open, it will again become null, we don't need to do this as we'll use its value in session
@@ -171,6 +172,10 @@
 
 
         function isOnlyRecoverCart(cart) {
+
+            if(isCartLoadingFbMR == 1) {
+                return;
+            }
 
             var queryParametersArray = getQueryParametersFbMR();
             if (typeof queryParametersArray != "undefined" && typeof queryParametersArray.recover_care_cart != 'undefined' && queryParametersArray.recover_care_cart != '') {
@@ -2095,6 +2100,51 @@
                     }, 20000);
                 }
             });
+
+            var proxied = window.XMLHttpRequest.prototype.send;
+            window.XMLHttpRequest.prototype.send = function () {
+                //console.log( arguments );
+                //Here is where you can add any code to process the request.
+                //If you want to pass the Ajax request object, pass the 'pointer' below
+                var pointer = this
+                var intervalId = window.setInterval(function () {
+                    if (pointer.readyState != 4) {
+                        return;
+                    }
+                    var url = pointer.responseURL;
+                    var lastPart = url.split('/');
+                    var name = lastPart[lastPart.length - 1];
+                    if(!isCartLoadingFbMR){
+                        if (name == 'add.js' || name == 'change.js') {
+                            //Show email collector
+                            isAjax = 1;
+                            console.log('show collector in ajax call');
+                            abandonedCartFbMR.process(0);
+                            setTimeout(function () {
+                                isAjaxFbMR = 0;
+                                confirmOptIn();
+                            }, 6000);
+/*
+                            abandonedCartFbMR.process(0);
+                            setTimeout(function () {
+                                ccFbMRJquery('.mfp-wrap').css('display', 'block');
+                            }, 2000);
+*/
+/*
+                            setTimeout(function () {
+                                isAjaxFbMR = 0;
+                                abandonedCartFbMR.process(0);
+                            }, 2000);
+*/
+                        }
+                    }
+                    //Here is where you can add any code to process the response.
+                    //If you want to pass the Ajax request object, pass the 'pointer' below
+                    clearInterval(intervalId);
+
+                }, 1);//I found a delay of 1 to be sufficient, modify it as you need.
+                return proxied.apply(this, [].slice.call(arguments));
+            };
 
         }
 

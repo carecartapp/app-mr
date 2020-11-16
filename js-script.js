@@ -1,7 +1,7 @@
 
 //******* @author: CareCart App-Mr *******************************************
-//****** Store Frontend JS - js-script.js GH v.2.0.5 - Build ver 2.2.1 *******
-//****** Updated at: 07-Oct-2020, 05:35 PM  **********************************
+//****** Store Frontend JS - js-script.js GH v.2.0.6 - Build ver 2.3.1 *******
+//****** Updated at: 15-Nov-2020, 05:55 PM  **********************************
 
     var isAjaxFbMR = 0;
     var isCartLoadingFbMR = 0;
@@ -176,9 +176,9 @@
             if(isCartLoadingFbMR == 1) {
                 return;
             }
-
             var queryParametersArray = getQueryParametersFbMR();
             if (typeof queryParametersArray != "undefined" && typeof queryParametersArray.recover_care_cart != 'undefined' && queryParametersArray.recover_care_cart != '') {
+                isCartLoadingFbMR = 1;
                 ccFbMRJquery('body').html('Loading....');
                 getCartFromCommandCenter(queryParametersArray.recover_care_cart, function (recoveryCart) {
                     recoverCart(cart, recoveryCart);
@@ -274,6 +274,7 @@
                     cart: cart,
                     store: storeFbMR,
                     //pnData: pnSubscriptionData,
+                    fbUserRef: window.localStorage.getItem('fb_user_ref'),
                     productPagePath: getProductPagePath(),
                     currentPageUrlWithoutQueryParameters: getCurrentPageUrlWithoutQueryParameters(),
                     impressionBy: impressionBy
@@ -429,6 +430,7 @@
 
                 FB.Event.subscribe('messenger_checkbox', function (e) {
                     console.log("messenger_checkbox event");
+                    //console.log('FB user_ref: ' + e.user_ref);
                     console.log(e);
 
                     if (e.event == 'rendered') {
@@ -466,7 +468,9 @@
                         }
                         facebookCheckboxWidgetStatus = e.state;
                         if (e.state == 'checked') {
-
+                            window.localStorage.setItem('fb_user_ref', null);
+                            window.localStorage.setItem('fb_user_ref',e.user_ref);
+                            console.log('fb_user_ref is set: ' + window.localStorage.getItem('fb_user_ref'));
                         }
                         console.log('appId: ' + appId);
                     } else if (e.event == 'not_you') {
@@ -507,32 +511,39 @@
                         ccFbMRJquery('head').append('<style type="text/css">.fb-customerchat.fb_invisible_flow.fb_iframe_widget iframe {left: 30px !important;}.fb_dialog {position: -webkit-sticky !important;position: fixed !important;left: 30px !important;} .fb_dialog_content iframe {left: 45px !important;}</style>');
                         console.log("New styling loaded ... Messenger on left side of screen");
                     }
+
+                    if(Shopify.shop == 'ho-liao.myshopify.com' || Shopify.shop == 'killwinner-design.myshopify.com')
+                    {
+                        // remove upper case css from h4 of class cc_messenger_widget_atc_title
+                        ccFbMRJquery('head').append('<style type="text/css">.fb-customerchat.fb_invisible_flow.fb_iframe_widget iframe{left: 0px !important;}</style>');
+                        console.log("Fix FB Messenger view in Mobile View... Previously getting cut");
+                    }
                 });
-                /*
-                //****************** Check Facebook Login Status of user on Store Frontend Page *********************
-                                FB.getLoginStatus(function(response) {
-                                    if (response.status === 'connected') {
-                                        // The user is logged in and has authenticated your
-                                        // app, and response.authResponse supplies
-                                        // the user's ID, a valid access token, a signed
-                                        // request, and the time the access token
-                                        // and signed request each expire.
-                                        var uid = response.authResponse.userID;
-                                        var accessToken = response.authResponse.accessToken;
-                                        console.log('The user is logged in and has authenticated your app');
-                                    } else if (response.status === 'not_authorized') {
-                                        // The user hasn't authorized your application.  They
-                                        // must click the Login button, or you must call FB.login
-                                        // in response to a user gesture, to launch a login dialog.
-                                        console.log('The user hasn\'t authorized your application.  They must click the Login button, or you must call FB.login');
-                                    } else {
-                                        // The user isn't logged in to Facebook. You can launch a
-                                        // login dialog with a user gesture, but the user may have
-                                        // to log in to Facebook before authorizing your application.
-                                        console.log('The user isn\'t logged in to Facebook. You can launch a login dialog with a user gesture, but the user may have to log in to Facebook before authorizing your application')
-                                    }
-                                });
-                */
+/*
+//****************** Check Facebook Login Status of user on Store Frontend Page *********************
+                FB.getLoginStatus(function(response) {
+                    if (response.status === 'connected') {
+                        // The user is logged in and has authenticated your
+                        // app, and response.authResponse supplies
+                        // the user's ID, a valid access token, a signed
+                        // request, and the time the access token
+                        // and signed request each expire.
+                        var uid = response.authResponse.userID;
+                        var accessToken = response.authResponse.accessToken;
+                        console.log('The user is logged in and has authenticated your app');
+                    } else if (response.status === 'not_authorized') {
+                        // The user hasn't authorized your application.  They
+                        // must click the Login button, or you must call FB.login
+                        // in response to a user gesture, to launch a login dialog.
+                        console.log('The user hasn\'t authorized your application.  They must click the Login button, or you must call FB.login');
+                    } else {
+                        // The user isn't logged in to Facebook. You can launch a
+                        // login dialog with a user gesture, but the user may have
+                        // to log in to Facebook before authorizing your application.
+                        console.log('The user isn\'t logged in to Facebook. You can launch a login dialog with a user gesture, but the user may have to log in to Facebook before authorizing your application')
+                    }
+                });
+*/
             };
 
             (function (d, s, id) {
@@ -2117,11 +2128,10 @@
                     if(!isCartLoadingFbMR){
                         if (name == 'add.js' || name == 'change.js') {
                             //Show email collector
-                            isAjax = 1;
+                            isAjaxFbMR = 1;
                             console.log('show collector in ajax call');
                             abandonedCartFbMR.process(0);
                             setTimeout(function () {
-                                isAjaxFbMR = 0;
                                 confirmOptIn();
                             }, 6000);
 /*
@@ -2136,6 +2146,7 @@
                                 abandonedCartFbMR.process(0);
                             }, 2000);
 */
+
                         }
                     }
                     //Here is where you can add any code to process the response.

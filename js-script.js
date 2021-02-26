@@ -1,7 +1,7 @@
 
 //******* @author: CareCart App-Mr *******************************************
-//****** Store Frontend JS - js-script.js GH v.2.0.6 - Build ver 2.3.1 *******
-//****** Updated at: 15-Nov-2020, 05:55 PM  **********************************
+//****** Store Frontend JS - js-script.js GH v.2.0.8 - Build ver 2.3.1 *******
+//****** Updated at: 26-Feb-2021, 02:56 PM  **********************************
 
     var isAjaxFbMR = 0;
     var isCartLoadingFbMR = 0;
@@ -58,6 +58,8 @@
         //var apiBaseUrlFbMR = "{{Config::get('app.url')}}";
         //var apiBaseUrlFbMR = "https://dev-proapp.carecart.io";
         var apiBaseUrlFbMR = "https://app-mr.carecart.io";
+        var CDN_APP_MR_URL = 'https://cdn.jsdelivr.net/gh/carecartapp/app-mr@2.0.8/';
+
         var facebookCheckboxWidget = {};
         var facebookCheckboxWidgetStatus = null;
         var facebookCheckboxWidgetType = null;
@@ -453,6 +455,13 @@
                             ccFbMRJquery('head').append('<style type="text/css">.cc_messenger_widget_atc_title {text-transform: none !important;}</style>');
                             console.log("remove upper case css from h4 of class cc_messenger_widget_atc_title");
                         }
+/*
+                        else if(Shopify.shop == 'hifinage-the-auditory-sensation.myshopify.com')
+                        {
+                            ccFbMRJquery('head').append('<style type="text/css">.cc-messenger-discount-popup {margin-bottom: 40px;}</style>');
+                            console.log("hifinage special css");
+                        }
+*/
                         else
                         {
                             ccFbMRJquery('head').append('<style type="text/css">.cc-atc-widget-main-container{margin-top: 0 !important;}</style>');
@@ -911,6 +920,12 @@
                 ccFbMRJquery('form[action="/cart/add"]').append(myvar);
                 ccFbMRJquery('.cc-messenger-checkbox-optin').append(elem);
             }
+
+            if(Shopify.shop == 'hifinage-the-auditory-sensation.myshopify.com')
+            {
+                ccFbMRJquery('head').append('<style type="text/css">.cc-messenger-discount-popup {margin-bottom: 40px;} .cc-dw-btn {background-color: #fff !important;border: 1px solid #ddd !important;color: #000 !important;text-transform: uppercase;}</style>');
+                console.log("hifinage special css");
+            }
         }
 
         function buildSendToMessengerWidget(appId, facebookPageData,addToCartPopUpData) {
@@ -1145,7 +1160,7 @@
             var closeButton = "";
             var pluginType = (data.button_plugin_type != '') ? data.button_plugin_type : 1;
             //console.log('pluginType: ' + pluginType);
-            var bannerImageURl = (data.email_banner_public_url != '') ? data.email_banner_public_url : apiBaseUrlFbMR + '/img/cart-popup.png';
+            var bannerImageURl = (data.email_banner_public_url != '') ? data.email_banner_public_url : CDN_APP_MR_URL + 'cart-popup.png';
             var headingFontWeight = (data.heading_is_bold == 1) ? 'bold' : 'normal';
             var headingFontStyle = (data.heading_is_italic == 1) ? 'italic' : 'normal';
             var headingFontSize = data.heading_font_size + 'px';
@@ -1201,8 +1216,8 @@
 
                 var buttonText = data.button_text_send_to_messenger;
                 var buttonBackgroundColor = data.button_background_color_send_to_messenger;
-                var fbWhiteChatSvg = apiBaseUrlFbMR + '/img/messenger-logo-white.svg';
-                var fbBlueChatSvg = apiBaseUrlFbMR + '/img/messenger-logo-blue.svg';
+                var fbWhiteChatSvg = CDN_APP_MR_URL + 'messenger-logo-white.svg';
+                var fbBlueChatSvg = CDN_APP_MR_URL + 'messenger-logo-blue.svg';
                 if(buttonBackgroundColor == 'blue')
                 {
                     var buttonColor = 'White';
@@ -1702,9 +1717,9 @@
                 +       '<div class="sticky-discount-box-open-view-cc standard-theme-border-2020-cc">'
                 +            '<div class="close-action standard-theme-color-2020-cc close-sticky-open-view"> ✖ </div>'
                 +            '<div class="sticky-discount-open-view-image-left-block-cc standard-theme-bg-2020-cc">'
-                +                '<img src="' + apiBaseUrlFbMR + '/img/sticky-discount-bg-left.png" class="sticky-discount-open-view-image-cc">'
+                +                '<img src="' + CDN_APP_MR_URL + 'sticky-discount-bg-left.png" class="sticky-discount-open-view-image-cc">'
                 +                '<span class="sticky-discount-open-view-left-content-cc">'
-                +                '<img src="' + apiBaseUrlFbMR + '/img/discount-star.png" class="discount-sticky-star-cc">'
+                +                '<img src="' + CDN_APP_MR_URL + 'discount-star.png" class="discount-sticky-star-cc">'
                 +                stickyDiscountData.offer + '</span>'
                 +            '</div>'
                 +            '<div class="sticky-discount-box-open-view-right-content-cc">'
@@ -1712,7 +1727,7 @@
                 +                    '<h3 class="sticky-discount-open-view-left-content-cc-title">' + stickyDiscountData.headline + '</h3>'
                 +                    '<h4 class="sticky-discount-open-view-left-content-cc-description">' + stickyDiscountData.description + '</h4>'
                 +                    '<div id="sticky-discount-fb-checkbox-widget">'
-                //+                       '<img src="' + apiBaseUrlFbMR + '/img/messenger-checkbox-cc-light.svg" class="messenger-checkbox-img">'
+                //+                       '<img src="' + CDN_APP_MR_URL + 'messenger-checkbox-cc-light.svg" class="messenger-checkbox-img">'
                 +                    '</div>'
                 +                '</div>'
                 +                '<div class="sticky-discount-open-view-left-content-footer-cc">'
@@ -1728,9 +1743,10 @@
 /*
                 console.log(showStickyDiscountOpenView);
                 console.log('showStickyDiscountOpenView Load Completed');
-                console.log(apiBaseUrlFbMR + '/img/sticky-discount-bg-left.png');
-                console.log(apiBaseUrlFbMR + '/img/discount-star.png');
-                console.log(apiBaseUrlFbMR + '/img/messenger-checkbox-cc-light.svg');
+                console.log(CDN_APP_MR_URL + 'sticky-discount-bg-left.png');
+                console.log(CDN_APP_MR_URL + 'discount-star.png');
+                console.log(CDN_APP_MR_URL + 'messenger-checkbox-cc-light.svg');
+                console.log('CDN_APP_MR_URL: ' + CDN_APP_MR_URL);
                 console.log('apiBaseUrlFbMR: ' + apiBaseUrlFbMR);
                 console.log('showStickyDiscountOpenView HERE MATE');
 */
@@ -1955,9 +1971,9 @@
                 +    '<div class="sticky-discount-box-subscribed-view-cc standard-theme-border-2020-cc">'
                 +        '<div class="close-action standard-theme-color-2020-cc close-sticky-open-view"> ✖ </div>'
                 +        '<div class="sticky-discount-subscribed-view-image-left-block-cc standard-theme-bg-2020-cc">'
-                +            '<img src="' + apiBaseUrlFbMR + '/img/sticky-discount-bg-left.png" class="sticky-discount-subscribed-view-image-cc">'
+                +            '<img src="' + CDN_APP_MR_URL + 'sticky-discount-bg-left.png" class="sticky-discount-subscribed-view-image-cc">'
                 +            '<span class="sticky-discount-subscribed-view-left-content-cc">'
-                +                '<img src="' + apiBaseUrlFbMR + '/img/donemark.svg" class="discount-sticky-star-cc">'
+                +                '<img src="' + CDN_APP_MR_URL + 'donemark.svg" class="discount-sticky-star-cc">'
                 +            '</span>'
                 +        '</div>'
                 +        '<div class="sticky-discount-box-subscribed-view-right-content-cc">'
@@ -2021,7 +2037,7 @@
 /*
                         var closeButton = "";
 
-                        var bannerImageURl = (data.email_banner_public_url != '') ? data.email_banner_public_url : apiBaseUrlFbMR + '/img/cart-popup.png';
+                        var bannerImageURl = (data.email_banner_public_url != '') ? data.email_banner_public_url : CDN_APP_MR_URL + 'cart-popup.png';
                         var headingFontWeight = (data.heading_is_bold == 1) ? 'bold' : 'normal';
                         var headingFontStyle = (data.heading_is_italic == 1) ? 'italic' : 'normal';
                         var headingFontSize = data.heading_font_size + 'px';

@@ -830,6 +830,12 @@
             {
                 myvar = myvar + '<div class="cc-messenger-discount-popup" class="discount-coupon-wrapper-cc" style="width: 400px; height: 280px;">'
             }
+            else if(Shopify.shop == 'thefurzy.myshopify.com')
+            {
+                //console.log('custom styling for thefurzy new');
+                myvar = myvar +
+                    '<div class="cc-messenger-discount-popup" style="width: 400px;height: 220px;">';
+            }            
             else
             {
                 myvar = myvar + '<div class="cc-messenger-discount-popup" class="discount-coupon-wrapper-cc" style="width: 400px;">';

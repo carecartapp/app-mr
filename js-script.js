@@ -1,7 +1,7 @@
 
 //******* @author: CareCart App-Mr *******************************************
-//****** Store Frontend JS - js-script.js GH v.2.0.8 - Build ver 2.3.1 *******
-//****** Updated at: 26-Feb-2021, 02:56 PM  **********************************
+//****** Store Frontend JS - js-script.js GH v.2.0.9 - Build ver 2.3.1 *******
+//****** Updated at: 11-Mar-2021, 04:52 PM  **********************************
 
     var isAjaxFbMR = 0;
     var isCartLoadingFbMR = 0;
@@ -58,7 +58,7 @@
         //var apiBaseUrlFbMR = "{{Config::get('app.url')}}";
         //var apiBaseUrlFbMR = "https://dev-proapp.carecart.io";
         var apiBaseUrlFbMR = "https://app-mr.carecart.io";
-        var CDN_APP_MR_URL = 'https://cdn.jsdelivr.net/gh/carecartapp/app-mr@2.0.8/';
+        var CDN_APP_MR_URL = 'https://cdn.jsdelivr.net/gh/carecartapp/app-mr@2.0.9/';
 
         var facebookCheckboxWidget = {};
         var facebookCheckboxWidgetStatus = null;
@@ -70,8 +70,8 @@
         this.init = function (callback, callbackArgs) {
             // console.log("Initialization started");
 
-            scriptInjectionFbMR("https://code.jquery.com/jquery-3.2.1.min.js", function () {
-                scriptInjectionFbMR("https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js", function () {
+            scriptInjectionFbMR(CDN_APP_MR_URL + "jquery-3.2.1.min.js", function () {
+                scriptInjectionFbMR(CDN_APP_MR_URL + "crypto-js-3.1.2.js", function () {
                     window.ccFbMRJquery = jQuery.noConflict(true);
                     scriptInjectionFbMR("https://use.fontawesome.com/e0a385ecbc.js");
 
@@ -835,7 +835,7 @@
                 //console.log('custom styling for thefurzy new');
                 myvar = myvar +
                     '<div class="cc-messenger-discount-popup" style="width: 400px;height: 220px;">';
-            }            
+            }
             else
             {
                 myvar = myvar + '<div class="cc-messenger-discount-popup" class="discount-coupon-wrapper-cc" style="width: 400px;">';
@@ -1094,7 +1094,8 @@
             }//End verify facebook page property exists
 
         }
-        scriptInjectionFbMR("https://code.jquery.com/jquery-3.2.1.min.js", function () {
+        
+        scriptInjectionFbMR(CDN_APP_MR_URL + "jquery-3.2.1.min.js", function () {
                 window.ccFbMRJquery = jQuery.noConflict(true);
 
                 ccFbMRJquery("body").on("click", ".cc-dw-btn", function () {

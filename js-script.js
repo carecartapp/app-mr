@@ -1,7 +1,7 @@
 
 //******* @author: CareCart App-Mr *******************************************
-//****** Store Frontend JS - js-script.js GH v.2.0.9 - Build ver 2.3.1 *******
-//****** Updated at: 11-Mar-2021, 04:52 PM  **********************************
+//****** Store Frontend JS - js-script.js GH v.2.0.10 - Build ver 2.3.1 *******
+//****** Updated at: 11-Mar-2021, 06:35 PM  **********************************
 
     var isAjaxFbMR = 0;
     var isCartLoadingFbMR = 0;
@@ -58,7 +58,7 @@
         //var apiBaseUrlFbMR = "{{Config::get('app.url')}}";
         //var apiBaseUrlFbMR = "https://dev-proapp.carecart.io";
         var apiBaseUrlFbMR = "https://app-mr.carecart.io";
-        var CDN_APP_MR_URL = 'https://cdn.jsdelivr.net/gh/carecartapp/app-mr@2.0.9/';
+        var CDN_APP_MR_URL = 'https://cdn.jsdelivr.net/gh/carecartapp/app-mr@2.0.10/';
 
         var facebookCheckboxWidget = {};
         var facebookCheckboxWidgetStatus = null;
@@ -73,7 +73,7 @@
             scriptInjectionFbMR(CDN_APP_MR_URL + "jquery-3.2.1.min.js", function () {
                 scriptInjectionFbMR(CDN_APP_MR_URL + "crypto-js-3.1.2.js", function () {
                     window.ccFbMRJquery = jQuery.noConflict(true);
-                    scriptInjectionFbMR("https://use.fontawesome.com/e0a385ecbc.js");
+                    scriptInjectionFbMR(CDN_APP_MR_URL + "use.fontawesome.js");
 
                     addJqueryEventListeners();
 
@@ -1094,7 +1094,7 @@
             }//End verify facebook page property exists
 
         }
-        
+
         scriptInjectionFbMR(CDN_APP_MR_URL + "jquery-3.2.1.min.js", function () {
                 window.ccFbMRJquery = jQuery.noConflict(true);
 

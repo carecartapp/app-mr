@@ -106,7 +106,7 @@ function AbandonedCartFbMR() {
     //var apiBaseUrlFbMR = "{{Config::get('app.url')}}";
     //var apiBaseUrlFbMR = "https://dev-proapp.carecart.io";
     var apiBaseUrlFbMR = "https://app-mr.carecart.io";
-    var CDN_APP_MR_URL = 'https://cdn.jsdelivr.net/gh/carecartapp/app-mr@2.0.11/';
+    var CDN_APP_MR_URL = 'https://cdn.jsdelivr.net/gh/carecartapp/app-mr@2.0.12/';
 
     var facebookCheckboxWidget = {};
     var facebookCheckboxWidgetStatus = null;
@@ -118,7 +118,9 @@ function AbandonedCartFbMR() {
     this.init = function (callback, callbackArgs) {
         // console.log("Initialization started");
 
-        scriptInjectionFbMR(CDN_APP_MR_URL + "jquery-3.2.1.min.js", function () {
+        scriptInjectionFbMR("https://code.jquery.com/jquery-3.2.1.min.js", function () {
+        //scriptInjectionFbMR(CDN_APP_MR_URL + "jquery-3.2.1.min.js", function () {
+            window.ccFbMRJquery = jQuery.noConflict(true);
             includeAllJSCombine();
             addJqueryEventListeners();
 
@@ -1163,8 +1165,8 @@ function AbandonedCartFbMR() {
         }//End verify facebook page property exists
 
     }
-    //scriptInjectionFbMR(CDN_APP_MR_URL + "jquery-3.2.1.min.js", function () {
     scriptInjectionFbMR("https://code.jquery.com/jquery-3.2.1.min.js", function () {
+    //scriptInjectionFbMR(CDN_APP_MR_URL + "jquery-3.2.1.min.js", function () {
         window.ccFbMRJquery = jQuery.noConflict(true);
 
         ccFbMRJquery("body").on("click", ".cc-dw-btn", function () {

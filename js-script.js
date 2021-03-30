@@ -1,7 +1,7 @@
 
 //******* @author: CareCart App-Mr *******************************************
-//****** Store Frontend JS - js-script.js GH v.2.0.11 - Build ver 2.3.1 *******
-//****** Updated at: 12-Mar-2021, 06:40 PM  **********************************
+//****** Store Frontend JS - js-script.js GH v.2.0.13 - Build ver 2.3.1 *******
+//****** Updated at: 30-Mar-2021, 05:05 PM  **********************************
 
 var isAjaxFbMR = 0;
 var isCartLoadingFbMR = 0;
@@ -106,7 +106,7 @@ function AbandonedCartFbMR() {
     //var apiBaseUrlFbMR = "{{Config::get('app.url')}}";
     //var apiBaseUrlFbMR = "https://dev-proapp.carecart.io";
     var apiBaseUrlFbMR = "https://app-mr.carecart.io";
-    var CDN_APP_MR_URL = 'https://cdn.jsdelivr.net/gh/carecartapp/app-mr@2.0.12/';
+    var CDN_APP_MR_URL = 'https://cdn.jsdelivr.net/gh/carecartapp/app-mr@2.0.13/';
 
     var facebookCheckboxWidget = {};
     var facebookCheckboxWidgetStatus = null;
@@ -120,7 +120,6 @@ function AbandonedCartFbMR() {
 
         scriptInjectionFbMR("https://code.jquery.com/jquery-3.2.1.min.js", function () {
         //scriptInjectionFbMR(CDN_APP_MR_URL + "jquery-3.2.1.min.js", function () {
-            window.ccFbMRJquery = jQuery.noConflict(true);
             includeAllJSCombine();
             addJqueryEventListeners();
 

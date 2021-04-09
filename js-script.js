@@ -1,7 +1,7 @@
 
 //******* @author: CareCart App-Mr *******************************************
-//****** Store Frontend JS - js-script.js GH v.2.0.14 - Build ver 2.3.1 ******
-//****** Updated at: 31-Mar-2021, 02:15 PM  **********************************
+//****** Store Frontend JS - js-script.js GH v.2.0.15 - Build ver 2.3.1 ******
+//****** Updated at: 09-Apr-2021, 05:50 PM  **********************************
 
 var isAjaxFbMR = 0;
 var isCartLoadingFbMR = 0;
@@ -92,7 +92,7 @@ function AbandonedCartFbMR() {
     //var apiBaseUrlFbMR = "{{Config::get('app.url')}}";
     //var apiBaseUrlFbMR = "https://dev-proapp.carecart.io";
     var apiBaseUrlFbMR = "https://app-mr.carecart.io";
-    var CDN_APP_MR_URL = 'https://cdn.jsdelivr.net/gh/carecartapp/app-mr@2.0.14/';
+    var CDN_APP_MR_URL = 'https://cdn.jsdelivr.net/gh/carecartapp/app-mr@2.0.15/';
 
     var facebookCheckboxWidget = {};
     var facebookCheckboxWidgetStatus = null;
@@ -395,12 +395,12 @@ function AbandonedCartFbMR() {
                                     var messengerData = response.records.messenger;
                                     //window.localStorage.setItem('messengerData',messengerData);
                                     window.localStorage.setItem('messengerData', JSON.stringify(messengerData));
-                                    /*
-                                                                        console.log('messengerData appId: ' + messengerData.appId);
-                                                                        console.log('messengerData facebookPage: ' + messengerData.facebookPage);
-                                                                        console.log('messengerData facebookCheckboxWidget: ' + messengerData.facebookCheckboxWidget);
-                                                                        console.log('messengerData' + JSON.stringify(messengerData));
-                                    */
+/*
+                                    console.log('messengerData appId: ' + messengerData.appId);
+                                    console.log('messengerData facebookPage: ' + messengerData.facebookPage);
+                                    console.log('messengerData facebookCheckboxWidget: ' + messengerData.facebookCheckboxWidget);
+                                    console.log('messengerData' + JSON.stringify(messengerData));
+*/
                                     if (isMessengerWidgetPopulated == false) {
                                         isMessengerWidgetPopulated = true;
                                         processMessenger(messengerData,addToCartPopUpData,stickyDiscountDataPlain);
@@ -452,7 +452,7 @@ function AbandonedCartFbMR() {
                 appId: appId,
                 autoLogAppEvents: true,
                 xfbml: true,
-                version: 'v10.0'
+                version: 'v7.0'
             });
 
             FB.Event.subscribe('send_to_messenger', function (e) {
@@ -503,7 +503,7 @@ function AbandonedCartFbMR() {
                     }
                     else if(Shopify.shop == 'ylff.myshopify.com')
                     {
-                        ccFbMRJquery('head').append('<style type="text/css">#trust_seal_ppr { padding-top: 10px;}</style>');
+                        ccFbMRJquery('head').append('<style type="text/css">#trust_seal_ppr {padding-top: 10px;} .cc-messenger-discount-popup {width:100% !important;}.cc-messenger-checkbox-for-copy {min-width:auto !important;width:100% !important;}</style>');
                         console.log("ylff.myshopify.com custom styling applied");
                     }
                     else if(Shopify.shop == '77mo.myshopify.com')
@@ -2219,12 +2219,12 @@ function AbandonedCartFbMR() {
                                                         ccFbMRJquery('.mfp-wrap').css('display', 'block');
                                                     }, 2000);
                         */
-                        /*
-                                                    setTimeout(function () {
-                                                        isAjaxFbMR = 0;
-                                                        abandonedCartFbMR.process(0);
-                                                    }, 2000);
-                        */
+/*
+                            setTimeout(function () {
+                                isAjaxFbMR = 0;
+                                abandonedCartFbMR.process(0);
+                            }, 2000);
+*/
 
                     }
                 }
@@ -2350,5 +2350,9 @@ function AbandonedCartFbMR() {
 
 }
 
-var abandonedCartFbMR = new AbandonedCartFbMR();
-abandonedCartFbMR.init(abandonedCartFbMR.process, [0], 0);
+setTimeout(
+    function() {
+        //do something special
+        var abandonedCartFbMR = new AbandonedCartFbMR();
+        abandonedCartFbMR.init(abandonedCartFbMR.process, [0], 0);
+    }, 5000);

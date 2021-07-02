@@ -1,7 +1,7 @@
 
 //******* @author: CareCart App-Mr *******************************************
-//****** Store Frontend JS - js-script.js GH v.2.0.16 - Build ver 2.3.1 ******
-//****** Updated at: 15-June-2021, 06:38 PM  **********************************
+//****** Store Frontend JS - js-script.js GH v.2.0.17 - Build ver 2.3.1 ******
+//****** Updated at: 02-July-2021, 07:50 PM  **********************************
 
     var isAjaxFbMR = 0;
     var isCartLoadingFbMR = 0;
@@ -92,7 +92,7 @@
         //var apiBaseUrlFbMR = "{{Config::get('app.url')}}";
         //var apiBaseUrlFbMR = "https://dev-proapp.carecart.io";
         var apiBaseUrlFbMR = "https://app-mr.carecart.io";
-        var CDN_APP_MR_URL = 'https://cdn.jsdelivr.net/gh/carecartapp/app-mr@2.0.16/';
+        var CDN_APP_MR_URL = 'https://cdn.jsdelivr.net/gh/carecartapp/app-mr@2.0.17/';
 
         var facebookCheckboxWidget = {};
         var facebookCheckboxWidgetStatus = null;
@@ -518,6 +518,11 @@
                             console.log("hifinage special css");
                         }
 */
+                        else if(Shopify.shop == 'purplesoda.myshopify.com')
+                        {
+                            ccFbMRJquery('head').append('<style type="text/css">.cc-messenger-discount-popup {margin-bottom: 40px;}</style>');
+                            console.log("hifinage special css");
+                        }
                         else
                         {
                             ccFbMRJquery('head').append('<style type="text/css">.cc-atc-widget-main-container{margin-top: 0 !important;}</style>');

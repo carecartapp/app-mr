@@ -578,6 +578,7 @@
 
                     if(fbMessengerPosition == 'left')
                     {
+                        ccFbMRJquery('head').append('<script type="text/css">.fb_iframe_widget iframe{left: 35px !important;}</script>')
                         ccFbMRJquery('head').append('<style type="text/css">.fb-customerchat.fb_invisible_flow.fb_iframe_widget iframe {left: 30px !important;}.fb_dialog {position: -webkit-sticky !important;position: fixed !important;left: 30px !important;} .fb_dialog_content iframe {left: 45px !important;}</style>');
                         console.log("New styling loaded ... Messenger on left side of screen");
                     }

@@ -1,6 +1,6 @@
 
 //******* @author: CareCart App-Mr *******************************************
-//****** Store Frontend JS - js-script.js GH v.2.0.17 - Build ver 2.3.1 ******
+//****** Store Frontend JS - js-script.js GH v.2.0.18 - Build ver 2.3.1 ******
 //****** Updated at: 02-July-2021, 07:50 PM  **********************************
 
     var isAjaxFbMR = 0;
@@ -92,7 +92,7 @@
         //var apiBaseUrlFbMR = "{{Config::get('app.url')}}";
         //var apiBaseUrlFbMR = "https://dev-proapp.carecart.io";
         var apiBaseUrlFbMR = "https://app-mr.carecart.io";
-        var CDN_APP_MR_URL = 'https://cdn.jsdelivr.net/gh/carecartapp/app-mr@2.0.17/';
+        var CDN_APP_MR_URL = 'https://cdn.jsdelivr.net/gh/carecartapp/app-mr@2.0.18/';
 
         var facebookCheckboxWidget = {};
         var facebookCheckboxWidgetStatus = null;
